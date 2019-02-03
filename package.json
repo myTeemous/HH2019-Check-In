@@ -1,0 +1,23 @@
+{
+  "name": "hh2019-check-in",
+  "version": "1.0.0",
+  "description": "HackHouston 2019 CheckIn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myTeemous/HH2019-Check-In.git"
+  },
+  "author": "Kenneth Ratliff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myTeemous/HH2019-Check-In/issues"
+  },
+  "homepage": "https://github.com/myTeemous/HH2019-Check-In#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "google-spreadsheet": "^2.0.7"
+  }
+}
