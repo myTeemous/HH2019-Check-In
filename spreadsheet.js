@@ -1,15 +1,13 @@
 const GoogleSpreadsheet = require('google-spreadsheet');
 const async = require('async');
  
-// spreadsheet key is the long id in the sheets URL
 const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
-var sheet;
+let sheet;
 let name = 'CARDIN';
  
 async.waterfall([
   function setAuth(step) {
-    // see notes below for authentication instructions!
-    var creds = require('./client_secret.json');
+    const creds = require('./client_secret.json');
  
     doc.useServiceAccountAuth(creds, step);
   },

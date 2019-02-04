@@ -4,7 +4,8 @@
   "description": "HackHouston 2019 CheckIn",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/myTeemous/HH2019-Check-In#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "google-spreadsheet": "^2.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
