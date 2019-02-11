@@ -2,19 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="HackHouston 2019 Check In">
+    <meta name="author" content="Kenneth Ratliff">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+    <title>HackHouston 2019 CheckIN</title>
 </head>
 <body>
-    <form method="POST">
-        First name:<br>
-        <input type="text" name="firstname">
-        <br>
-        Last name:<br>
-        <input type="text" name="lastname">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form> 
+    <section id="banner">
+        <img src="/images/hackhouston-header.png" alt="">
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="exampleFirstName">Firstname</label>
+                        <input type="text" name="firstname" class="form-control" id="exampleInputFirstName"
+                        placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleLastName">Lastname</label>
+                        <input type="text" name="firstname" class="form-control" id="exampleInputLastName"
+                        placeholder="Last Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
 </body>
 </html>
