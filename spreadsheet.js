@@ -31,7 +31,7 @@ async.waterfall([
         targetRow = i;
       }
 
-      rows[targetRow].district = 'In';
+      rows[targetRow].district = 'Test';
       rows[targetRow].save();
 
       step();
