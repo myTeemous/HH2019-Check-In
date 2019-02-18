@@ -49,7 +49,7 @@ router.post('/', (req, res, next) => {
         }
 
         if(found) {
-            rows[targetRow].district = 'req test';
+            rows[targetRow].district = 'old';
             rows[targetRow].save();
         }
 
