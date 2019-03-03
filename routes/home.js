@@ -17,6 +17,7 @@ router.post('/', (req, res, next) => {
 
     const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
     let sheet;
+    let found = false;
  
     async.waterfall([
       function setAuth(step) {
@@ -38,18 +39,17 @@ router.post('/', (req, res, next) => {
       function( err, rows ) {
         let len = rows.length;
         let targetRow = 0;
-        let found = false;
 
         for(let i = 0; i < len; i++) {
             console.log(rows[i].lastname)
-          if(rows[i].lastname.toUpperCase() === req.body.email.toUpperCase()) {
+          if(rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) {
             targetRow = i;
             found = true;
           }
         }
 
         if(found) {
-            rows[targetRow].district = 'old';
+            rows[targetRow].district = 'AJAX';
             rows[targetRow].save();
         }
 
@@ -60,6 +60,10 @@ router.post('/', (req, res, next) => {
     if( err ) 
       console.log('Error: '+err);
    });
+
+   if(found === true) {
+     res.send({ajax: 'successful'});
+   }
 });
 
 module.exports = router;
