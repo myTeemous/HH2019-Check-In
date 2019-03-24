@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     console.log(req.body.firstname + ' ' + req.body.lastname + ' ' + req.body.email);
-    res.send(req.body.firstname + ' ' + req.body.lastname + ' ' + req.body.email);
 
     const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
     let sheet;
@@ -23,47 +22,43 @@ router.post('/', (req, res, next) => {
       function setAuth(step) {
         const creds = require('../client_secret.json');
         doc.useServiceAccountAuth(creds, step);
-    },
-    function getInfoAndWorksheets(step) {
-      doc.getInfo(function(err, info) {
-        sheet = info.worksheets[0];
-        step();
-      });
-    },
-    function workingWithRows(step) {
-      sheet.getRows({
-        offset: 1,
-        limit: 20,
-        orderby: 'last_name'
-      }, 
-      function( err, rows ) {
-        let len = rows.length;
-        let targetRow = 0;
+      },
+      function getInfoAndWorksheets(step) {
+        doc.getInfo(function(err, info) {
+          sheet = info.worksheets[0];
+          step();
+        });
+      },
+      function workingWithRows(step) {
+        sheet.getRows({
+          offset: 1,
+          limit: 20,
+          orderby: 'last_name'
+        }, 
+        function( err, rows ) {
+          let len = rows.length;
+          let targetRow = 0;
 
-        for(let i = 0; i < len; i++) {
-            console.log(rows[i].lastname)
-          if(rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) {
-            targetRow = i;
-            found = true;
+          for(let i = 0; i < len; i++) {
+              console.log(rows[i].lastname)
+            if(rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) {
+              targetRow = i;
+              found = true;
+            }
           }
-        }
 
-        if(found) {
-            rows[targetRow].district = 'AJAX';
-            rows[targetRow].save();
-        }
-
-        step();
-    });
-  }
-], function(err){
-    if( err ) 
-      console.log('Error: '+err);
-   });
-
-   if(found === true) {
-     res.send({ajax: 'successful'});
-   }
+          if(found) {
+              rows[targetRow].district = 'ajax';
+              rows[targetRow].save();
+              res.json({userFound: 1});
+          }
+          step();
+      });
+    }
+  ], function(err){
+      if( err ) 
+        console.log('Error: ' + err);
+    }); //waterfall function ends here
 });
 
 module.exports = router;
