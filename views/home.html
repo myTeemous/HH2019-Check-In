@@ -58,7 +58,6 @@
                 return response.text();
             })
             .then((jsonResponse) => {
-                console.log('from script' + ' ' + jsonResponse);
                 if(jsonResponse === '{"userFound":1}') {
                     const div = document.createElement('div');
                     div.className = 'alert alert-success';
@@ -68,6 +67,8 @@
                     parentElement.insertBefore(div, myForm);
 
                     myForm.reset();
+                    
+                    setTimeout(() => document.querySelector('.alert').remove(), 3000);
                 }
                 else {
                     const div = document.createElement('div');
@@ -78,6 +79,8 @@
                     parentElement.insertBefore(div, myForm);
 
                     myForm.reset();
+
+                    setTimeout(() => document.querySelector('.alert').remove(), 3000);
                 }
             }).catch((error) => {
                 console.error(error);
