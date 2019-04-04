@@ -3,3 +3,13 @@ img {
     height: auto;
     padding: 30px 0px;
 }
+
+.alert-success {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.alert-danger {
+    font-weight: 900;
+    font-size: 30px;
+}

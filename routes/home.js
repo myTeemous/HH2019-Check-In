@@ -48,9 +48,12 @@ router.post('/', (req, res, next) => {
           }
 
           if(found) {
-              rows[targetRow].district = 'ajax';
+              rows[targetRow].district = 'alert';
               rows[targetRow].save();
               res.json({userFound: 1});
+          }
+          else {
+            res.json({userFound: 0});
           }
           step();
       });
