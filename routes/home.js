@@ -12,8 +12,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    console.log(req.body.firstname + ' ' + req.body.lastname + ' ' + req.body.email);
-
     const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
     let sheet;
     let found = false;
@@ -40,7 +38,6 @@ router.post('/', (req, res, next) => {
           let targetRow = 0;
 
           for(let i = 0; i < len; i++) {
-              console.log(rows[i].lastname)
             if(rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) {
               targetRow = i;
               found = true;
@@ -48,7 +45,7 @@ router.post('/', (req, res, next) => {
           }
 
           if(found) {
-              rows[targetRow].district = 'alert';
+              rows[targetRow].district = 'check';
               rows[targetRow].save();
               res.json({userFound: 1});
           }
