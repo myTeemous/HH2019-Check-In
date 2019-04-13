@@ -38,7 +38,7 @@ router.post('/', (req, res, next) => {
           let targetRow = 0;
 
           for(let i = 0; i < len; i++) {
-            if((rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) && (rows[i].firstname.toUpperCase() === req.body.firstname.toUpperCase()) && (rows[i].email.toUpperCase() === req.body.email.toUpperCase())) {
+            if((rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) && (rows[i].firstname.toUpperCase() === req.body.firstname.toUpperCase())) {
               targetRow = i;
               found = true;
             }
