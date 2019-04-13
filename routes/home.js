@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const doc = new GoogleSpreadsheet('13_wvQpyRrvTpSD12jB9iEVvNKIUPk6jxWijmDLnpDec');
+    const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
     let sheet;
     let found = false;
  
@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
       function workingWithRows(step) {
         sheet.getRows({
           offset: 1,
-          limit: 20,
+          limit: 600,
           orderby: 'lastname'
         }, 
         function( err, rows ) {
@@ -38,14 +38,14 @@ router.post('/', (req, res, next) => {
           let targetRow = 0;
 
           for(let i = 0; i < len; i++) {
-            if((rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) && (rows[i].firstname.toUpperCase() === req.body.firstname.toUpperCase())) {
+            if((rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) && (rows[i].firstname.toUpperCase() === req.body.firstname.toUpperCase()) && (rows[i].email.toUpperCase() === req.body.email.toUpperCase())) {
               targetRow = i;
               found = true;
             }
           }
 
           if(found) {
-              rows[targetRow].checkin = 'IN';
+              rows[targetRow].checkin = 'In';
               rows[targetRow].save();
               res.json({userFound: 1});
           }
