@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const doc = new GoogleSpreadsheet('1ELqh0KKurlnxhAMRNxbHyhjRsyCYHmYSfpec6pGZDYc');
+    const doc = new GoogleSpreadsheet('13_wvQpyRrvTpSD12jB9iEVvNKIUPk6jxWijmDLnpDec');
     let sheet;
     let found = false;
  
@@ -45,7 +45,7 @@ router.post('/', (req, res, next) => {
           }
 
           if(found) {
-              rows[targetRow].checkin = 'Ken = BEST';
+              rows[targetRow].checkin = 'IN';
               rows[targetRow].save();
               res.json({userFound: 1});
           }
