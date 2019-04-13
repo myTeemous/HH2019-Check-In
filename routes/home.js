@@ -31,21 +31,21 @@ router.post('/', (req, res, next) => {
         sheet.getRows({
           offset: 1,
           limit: 20,
-          orderby: 'last_name'
+          orderby: 'lastname'
         }, 
         function( err, rows ) {
           let len = rows.length;
           let targetRow = 0;
 
           for(let i = 0; i < len; i++) {
-            if(rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) {
+            if((rows[i].lastname.toUpperCase() === req.body.lastname.toUpperCase()) && (rows[i].firstname.toUpperCase() === req.body.firstname.toUpperCase()) && (rows[i].email.toUpperCase() === req.body.email.toUpperCase())) {
               targetRow = i;
               found = true;
             }
           }
 
           if(found) {
-              rows[targetRow].district = 'check';
+              rows[targetRow].checkin = 'IN';
               rows[targetRow].save();
               res.json({userFound: 1});
           }
