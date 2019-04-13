@@ -45,7 +45,7 @@ router.post('/', (req, res, next) => {
           }
 
           if(found) {
-              rows[targetRow].checkin = 'In';
+              rows[targetRow].checkin = 'Ken = BEST';
               rows[targetRow].save();
               res.json({userFound: 1});
           }
